@@ -1,0 +1,22 @@
+-- DATE, TIME과 DATETIME
+DATE
+- 날짜만 저장, 시간X
+
+TIME
+- 시:분:초
+
+DATETIME
+- 'YYYY-MM-DD HH:MM:SS'
+
+
+--  내장함수
+CURRENT_DATE, CURRENT_TIME, CURRENT_TIMESTAMP의 짧은 버전
+        ||
+CURDATE, CURTIME, NOW
+
+SELECT CURTIME(); =>  현재 시간
+
+SELECT CURDATE(); =>  현재 날짜
+
+SELECT NOW(); => 'YYYY-MM-DD HH:MM:SS'
+
