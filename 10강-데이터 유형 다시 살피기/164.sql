@@ -53,3 +53,68 @@ SELECT
   ============================================================
 
   TIMESTAMP   ( 날짜와 시간을 더한것)
+
+
+  ============================================================
+  CREATE TABLE captions (
+    text VARCHAR(150),
+    created_at TIMESTAMP default CURRENT_TIMESTAMP
+  );
+  
+  CREATE TABLE captions2 (
+    text VARCHAR(150),
+    created_at TIMESTAMP default CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  );
+
+  ON UPDATE를 컬럼에 기본 설정을하게되면 업데이트가 이뤄질때마다 현재시간으로 저장이됨
+
+  DATETIME으로 사용이 가능하지만 TIMESTAMP가 공간을 더 차지하며 훨씬 더 좁은 범위의 날짜를 지원함
+
+============================================================
+
+-- What's a good use case for CHAR?
+ 
+-- Used for text that we know has a fixed length, e.g., State abbreviations, 
+-- abbreviated company names, etc.
+ 
+CREATE TABLE inventory (
+    item_name VARCHAR(100),
+    price DECIMAL(8,2),
+    quantity INT
+);
+ 
+-- What's the difference between DATETIME and TIMESTAMP?
+ 
+-- They both store datetime information, but there's a difference in the range, 
+-- TIMESTAMP has a smaller range. TIMESTAMP also takes up less space. 
+-- TIMESTAMP is used for things like meta-data about when something is created
+-- or updated.
+ 
+ 
+SELECT CURTIME();
+ 
+SELECT CURDATE();
+ 
+SELECT DAYOFWEEK(CURDATE());
+SELECT DAYOFWEEK(NOW());
+SELECT DATE_FORMAT(NOW(), '%w') + 1;
+ 
+SELECT DAYNAME(NOW());
+SELECT DATE_FORMAT(NOW(), '%W');
+ 
+SELECT DATE_FORMAT(CURDATE(), '%m/%d/%Y');
+ 
+SELECT DATE_FORMAT(NOW(), '%M %D at %h:%i');
+ 
+CREATE TABLE tweets(
+    content VARCHAR(140),
+    username VARCHAR(20),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+ 
+INSERT INTO tweets (content, username) VALUES('this is my first tweet', 'coltscat');
+SELECT * FROM tweets;
+ 
+INSERT INTO tweets (content, username) VALUES('this is my second tweet', 'coltscat');
+SELECT * FROM tweets;
